@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sight Words</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: Black;
+    }
+
+    .word-container {
+      font-size: 7em;
+      cursor: pointer;
+      color: white; /* Set initial color */
+    }
+  </style>
+</head>
+<body>
+  <div class="word-container" onclick="changeWord()">Click me to change the word!</div>
+
+  <script>
+    // Array of words
+    var words = ["a", "many", "about", "may", "after", "more", "all", "my", "an", "no", "and", "not",
+    "are", "now", "as", "number", "ask", "of", "at", "on", "away", 
+    "or", "be", "other", "been", "out", "before", "over", "big", "ride", "but", "run", "by", "said", "call",
+    "saw", "can", "see", "come", "she", "could", "six", 
+    "did", "so", "do", "some", "down", "stop", "each", "than", "find", "that", "first", "the", "for", "their",
+    "from", "them", "get", "then", "go", "there", 
+    "good", "these", "had", "they", "has", "this", "have", "time", "he", "to", "her", "two", "here", "up", 
+    "him", "use", "his", "was", "how", "way", "I", "we", "were", "if", "in", "what", 
+    "into", "when", "is", "which", "it", "who", "its", "will", "just", "with", "like", "word", "little", 
+    "would", "long", "write", "look", "yes", "made", "you", "make", "your", ];
+
+    // Array of specified colors
+    var specifiedColors = ["blue", "red", "green", "yellow", "saddlebrown", "darkorange", "white"];
+
+    // Function to change the word and text color
+    function changeWord() {
+      // Get a random index from the array
+      var randomIndex = Math.floor(Math.random() * words.length);
+      
+      // Get the word at the random index
+      var randomWord = words[randomIndex];
+      
+      // Get a random index for the specified colors
+      var randomColorIndex = Math.floor(Math.random() * specifiedColors.length);
+      
+      // Get the color at the random index
+      var randomColor = specifiedColors[randomColorIndex];
+      
+      // Display the random word and set the text color
+      document.querySelector(".word-container").innerHTML = randomWord;
+      document.querySelector(".word-container").style.color = randomColor;
+    }
+  </script>
+</body>
+</html>
