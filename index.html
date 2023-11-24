@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sight Words</title>
+  <title>Alphabet</title>
   <style>
     body {
       display: flex;
@@ -11,23 +11,73 @@
       justify-content: center;
       height: 100vh;
       margin: 0;
-      font-family: courier, monospace;
-      background-color: Black;
+      font-family: Arial, sans-serif;
+      background-color: #130f40;
     }
 
-    .word-container {
-      font-size: 7em;
-      cursor: pointer;
+    #word-container {
+      font-size: 13em;
       color: white; /* Set initial color */
+      user-select: none; /* Prevent text selection */
+      position: relative;
+      z-index: 2; /* Ensure the word container appears above the border */
+    }
+
+    #static-border {
+      position: absolute;
+      top: 10%; /* Adjust the top position as needed */
+      left: 10%; /* Adjust the left position as needed */
+      width: 80%; /* Adjust the width as needed */
+      height: 80%; /* Adjust the height as needed */
+      border: 10px #f5f6fa; /* Adjust border properties as needed */
+      background-color:#34495e; /* Adjust background color as needed */
+      z-index: 1; /* Ensure the border appears behind the word container */
+      border-radius: 10px; /* Adjust the border-radius for rounded corners */
+    }<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alphabet</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #192a56;
+    }
+
+    #word-container {
+      font-size: 7em;
+      color: white; /* Set initial color */
+      user-select: none; /* Prevent text selection */
+      position: relative;
+      z-index: 2; /* Ensure the word container appears above the border */
+    }
+
+    #static-border {
+      position: absolute;
+      top: 20%; /* Adjust the top position as needed */
+      left: 10%; /* Adjust the left position as needed */
+      width: 80%; /* Adjust the width as needed */
+      height: 60%; /* Adjust the height as needed */
+      border: 8px solid #f5f6fa; /* Adjust border properties as needed */
+      background-color: #34495e; /* Adjust background color as needed */
+      z-index: 1; /* Ensure the border appears behind the word container */
+      border-radius: 10px; /* Adjust the border-radius for rounded corners */
     }
   </style>
 </head>
 <body>
-  <div class="word-container" onclick="changeWord()">Click me to change the word!</div>
+  <div id="static-border"></div>
+  <div id="word-container"></div>
 
   <script>
     // Array of words
-    var words = ["a", "many", "about", "may", "after", "more", "all", "my", "an", "no", "and", "not",
+   var words = ["a", "many", "about", "may", "after", "more", "all", "my", "an", "no", "and", "not",
     "are", "now", "as", "number", "ask", "of", "at", "on", "away", 
     "or", "be", "other", "been", "out", "before", "over", "big", "ride", "but", "run", "by", "said", "call",
     "saw", "can", "see", "come", "she", "could", "six", 
@@ -37,6 +87,7 @@
     "him", "use", "his", "was", "how", "way", "I", "we", "were", "if", "in", "what", 
     "into", "when", "is", "which", "it", "who", "its", "will", "just", "with", "like", "word", "little", 
     "would", "long", "write", "look", "yes", "made", "you", "make", "your", ];
+
 
     // Array of specified colors
     var specifiedColors = ["blue", "red", "green", "yellow", "saddlebrown", "darkorange", "white"];
@@ -56,9 +107,15 @@
       var randomColor = specifiedColors[randomColorIndex];
       
       // Display the random word and set the text color
-      document.querySelector(".word-container").innerHTML = randomWord;
-      document.querySelector(".word-container").style.color = randomColor;
+      document.getElementById("word-container").innerHTML = randomWord;
+      document.getElementById("word-container").style.color = randomColor;
     }
+
+    // Call the changeWord function on page load
+    window.onload = changeWord;
+    
+    // Set up a click event listener to change the word on click
+    document.getElementById("word-container").addEventListener("click", changeWord);
   </script>
 </body>
 </html>
